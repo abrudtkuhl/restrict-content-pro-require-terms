@@ -50,7 +50,7 @@ class RCP_Terms {
     $this->options = get_option( 'rcp_terms_options' );
     ?>
     <div class="wrap">
-      <h2>My Settings</h2>
+      <h2>RCP Terms and Conditions</h2>
       <form method="post" action="options.php">
         <?php
           // This prints out all hidden setting fields
@@ -71,8 +71,8 @@ class RCP_Terms {
     );
 
     add_settings_section(
-      'setting_section_id', // ID
-      'Terms', // Title
+      'rcp_terms_admin_section', // ID
+      '', // Title
       array( $this, 'admin_print_section_info' ), // Callback
       'rcp-terms-settings-admin' // Page
     );
@@ -82,7 +82,7 @@ class RCP_Terms {
       'Label', // Title
       array( $this, 'rcp_terms_label_callback' ), // Callback
       'rcp-terms-settings-admin', // Page
-      'setting_section_id' // Section
+      'rcp_terms_admin_section' // Section
     );
 
     add_settings_field(
@@ -90,7 +90,7 @@ class RCP_Terms {
       'Link', // Title
       array( $this, 'rcp_terms_link_callback' ), // Callback
       'rcp-terms-settings-admin', // Page
-      'setting_section_id' // Section
+      'rcp_terms_admin_section' // Section
     );
   }
 
@@ -126,6 +126,9 @@ class RCP_Terms {
     if( isset( $input['rcp_terms_label'] ) )
       $new_input['rcp_terms_label'] = sanitize_text_field( $input['rcp_terms_label'] );
 
+    if( isset( $input['rcp_terms_link'] ) )
+      $new_input['rcp_terms_link'] = sanitize_text_field( $input['rcp_terms_link'] );
+
     return $new_input;
   }
 
@@ -134,10 +137,19 @@ class RCP_Terms {
    * Render fields in RCP Registration Form
    */
   public function terms_field() {
+    $options = get_option( 'rcp_terms_options' );
+    $link = isset( $options[ 'rcp_terms_link' ] ) ? $options[ 'rcp_terms_link' ] : '';
+    $label = (isset( $options[ 'rcp_terms_label' ] ) && !empty( $options [ 'rcp_terms_label' ] )) ? $options[ 'rcp_terms_label' ] : 'Please Accept Terms and Conditions';
     ob_start(); ?>
 		<p>
 			<input name="rcp_terms_agreement" id="rcp_terms_agreement" class="require" type="checkbox"/>
-			<label for="rcp_terms_agreement">Agree to Our Terms of Use</label>
+			<label for="rcp_terms_agreement">
+        <?php if ( !empty ( $link ) ) : ?>
+          <a href="<?php echo $link; ?>" target="_blank"><?php echo $label; ?></a>
+        <?php else: ?>
+          <?php echo $label; ?>
+        <?php endif; ?>
+      </label>
 		</p>
   	<?php
   	echo ob_get_clean();
