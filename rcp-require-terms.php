@@ -4,7 +4,7 @@
  * Version: 1.0
  * Plugin URI: https://github.com/abrudtkuhl/restrict-content-pro-require-terms
  * Description: Adds an "Accept Terms And Conditions" checkbox to Restrict Content Pro plugin
- * Author: Andy Brudtuhl
+ * Author: Andy Brudktuhl
  * Author URI: http://youmetandy.com
  * Requires at least: 4.0
  * Tested up to: 4.1
