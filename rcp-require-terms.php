@@ -7,7 +7,7 @@
  * Author: Andy Brudktuhl
  * Author URI: http://youmetandy.com
  * Requires at least: 4.0
- * Tested up to: 4.1
+ * Tested up to: 4.2.2
  *
  * Text Domain: restrict-content-pro-require-terms
  * Domain Path: /lang/
