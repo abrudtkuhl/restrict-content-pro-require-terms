@@ -34,7 +34,7 @@ class RCP_Terms {
       add_action( 'rcp_after_register_form_fields', array( $this, 'terms_field' ) );
       add_action( 'rcp_form_errors', array( $this, 'check_for_agreement' ) );
     } else {
-      add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+      add_action( 'admin_menu', array( $this, 'admin_menu' ), 20 );
       add_action( 'admin_init', array( $this, 'admin_init' ) );
     }
   }
