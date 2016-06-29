@@ -141,16 +141,16 @@ class RCP_Terms {
     $link = isset( $options[ 'rcp_terms_link' ] ) ? $options[ 'rcp_terms_link' ] : '';
     $label = (isset( $options[ 'rcp_terms_label' ] ) && !empty( $options [ 'rcp_terms_label' ] )) ? $options[ 'rcp_terms_label' ] : 'Please Accept Terms and Conditions';
     ob_start(); ?>
-		<p>
-			<input name="rcp_terms_agreement" id="rcp_terms_agreement" class="require" type="checkbox"/>
-			<label for="rcp_terms_agreement">
-        <?php if ( !empty ( $link ) ) : ?>
-          <a href="<?php echo $link; ?>" target="_blank"><?php echo $label; ?></a>
-        <?php else: ?>
-          <?php echo $label; ?>
-        <?php endif; ?>
-      </label>
-		</p>
+	<fieldset class="rcp_terms_fieldset">
+		<input name="rcp_terms_agreement" id="rcp_terms_agreement" class="require" type="checkbox"/>
+		<label for="rcp_terms_agreement">
+	        <?php if ( !empty ( $link ) ) : ?>
+	          <a href="<?php echo $link; ?>" target="_blank"><?php echo $label; ?></a>
+	        <?php else: ?>
+	          <?php echo $label; ?>
+	        <?php endif; ?>
+	        </label>
+	</fieldset>
   	<?php
   	echo ob_get_clean();
   }
